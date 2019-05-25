@@ -4,6 +4,7 @@ motionSensor.watch((err, value) => {
     if (err) {
         throw err;
     }
+        console.log(value)
         console.log("Motion Detected")
     
 })
