@@ -30,7 +30,7 @@ function connectToDiscord() {
     })
 }
 function isConnected(){
-    return client.status !== DISCORD_READY
+    return client.status === DISCORD_READY
 }
 async function sendPoopMessage() {
     await client.channels.get(process.env.DISCORD_CHANNEL).send('It\'s time to scoopy the poopy!')
