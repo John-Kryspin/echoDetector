@@ -15,6 +15,7 @@ motionSensor.watch(async (err, value) => {
     }
     await sendPoopMessage();
 })
+console.log("Watching")
 process.on('SIGINT', () => {
     motionSensor.unexport();
 });
