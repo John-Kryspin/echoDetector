@@ -9,9 +9,8 @@ motionSensor.watch(async (err, value) => {
     if (err) {
         throw err;
     }
-    console.log(value)
-    console.log("Motion Detected")
-    if (client.status !== DISCORD_READY) {
+    console.log({value, motionDetected: true})
+    if (!isConnected()) {
         await connectToDiscord();
     }
     await sendPoopMessage();
@@ -29,6 +28,9 @@ function connectToDiscord() {
             resolve()
         });
     })
+}
+function isConnected(){
+    return client.status !== DISCORD_READY
 }
 async function sendPoopMessage() {
     await client.channels.get(process.env.DISCORD_CHANNEL).send('It\'s time to scoopy the poopy!')
