@@ -4,13 +4,16 @@ const motionSensor = new Gpio(17, 'in', 'rising');
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
+const DISCORD_READY = 0;
 motionSensor.watch(async (err, value) => {
     if (err) {
         throw err;
     }
     console.log(value)
     console.log("Motion Detected")
-    await connectToDiscord();
+    if (client.status !== DISCORD_READY) {
+        await connectToDiscord();
+    }
     await sendPoopMessage();
 })
 process.on('SIGINT', () => {
@@ -18,6 +21,7 @@ process.on('SIGINT', () => {
 });
 
 function connectToDiscord() {
+    console.log("Connecting to discord")
     return new Promise((resolve, reject) => {
         client.login(process.env.DISCORD_KEY);
         client.on('ready', () => {
