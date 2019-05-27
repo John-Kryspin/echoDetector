@@ -38,6 +38,6 @@ function isConnected(){
     return client.status === DISCORD_READY
 }
 async function sendPoopMessage() {
-    await client.channels.get(process.env.DISCORD_CHANNEL).send('It\'s time to scoopy the poopy!')
+    await client.channels.get(String(process.env.DISCORD_CHANNEL)).send('It\'s time to scoopy the poopy!')
     console.log("Message Sent!")
 }
