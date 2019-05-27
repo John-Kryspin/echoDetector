@@ -20,7 +20,6 @@ const DISCORD_READY = 0;
     if (!isConnected()) {
         await connectToDiscord();
     }
-    sendPoopMessage();
 })(null,1)
 console.log("Watching")
 
@@ -31,18 +30,17 @@ function connectToDiscord() {
         client.on('ready', () => {
             console.log(`Logged in as ${client.user.tag}!`);
             resolve()
+                try {
+                    client.channels.get(String(process.env.DISCORD_CHANNEL)).send('It\'s time to scoopy the poopy!')
+                    console.log("Message Sent!")
+                }
+                catch (err){
+                    console.log(err)
+                }
+            
         });
     })
 }
 function isConnected() {
     return client.status === DISCORD_READY
-}
-function sendPoopMessage() {
-    try {
-        client.channels.get(String(process.env.DISCORD_CHANNEL)).send('It\'s time to scoopy the poopy!')
-        console.log("Message Sent!")
-    }
-    catch (err){
-        console.log(err)
-    }
 }
