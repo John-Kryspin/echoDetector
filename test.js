@@ -20,7 +20,7 @@ const DISCORD_READY = 0;
     if (!isConnected()) {
         await connectToDiscord();
     }
-    await sendPoopMessage();
+    sendPoopMessage();
 })(null,1)
 console.log("Watching")
 
@@ -37,9 +37,9 @@ function connectToDiscord() {
 function isConnected() {
     return client.status === DISCORD_READY
 }
-async function sendPoopMessage() {
+function sendPoopMessage() {
     try {
-        await client.channels.get(String(process.env.DISCORD_CHANNEL)).send('It\'s time to scoopy the poopy!')
+        client.channels.get(String(process.env.DISCORD_CHANNEL)).send('It\'s time to scoopy the poopy!')
         console.log("Message Sent!")
     }
     catch (err){
