@@ -18,7 +18,7 @@ const DISCORD_READY = 0;
         time: today
     })
     if (!isConnected()) {
-        await connectToDiscord();
+        // await connectToDiscord();
     }
 })(null,1)
 console.log("Watching")
@@ -26,21 +26,22 @@ console.log("Watching")
 function connectToDiscord() {
     console.log("Connecting to discord")
     return new Promise((resolve, reject) => {
-        client.login(process.env.DISCORD_KEY);
-        client.on('ready', () => {
-            console.log(`Logged in as ${client.user.tag}!`);
-            try {
-                client.channels.get(String(process.env.DISCORD_CHANNEL)).send('It\'s time to scoopy the poopy!')
-                console.log("Message Sent!")
-            }
-            catch (err){
-                console.log(err)
-            }
-            resolve()
-            
-        });
+  
     })
 }
+client.login(process.env.DISCORD_KEY);
+client.on('ready', () => {
+    console.log(`Logged in as ${client.user.tag}!`);
+    try {
+        client.channels.get(String(process.env.DISCORD_CHANNEL)).send('It\'s time to scoopy the poopy!')
+        console.log("Message Sent!")
+    }
+    catch (err){
+        console.log(err)
+    }
+    resolve()
+    
+});
 function isConnected() {
     return client.status === DISCORD_READY
 }
