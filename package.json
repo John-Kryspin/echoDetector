@@ -11,6 +11,7 @@
   "dependencies": {
     "discord.js": "^11.5.0",
     "dotenv": "^8.0.0",
+    "moment": "^2.24.0",
     "onoff": "^4.1.1"
   }
 }
