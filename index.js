@@ -1,6 +1,6 @@
 require('dotenv').config()
 const Gpio = require('onoff').Gpio;
-const motionSensor = new Gpio(17, 'in', 'rising');
+const motionSensor = new Gpio(17, 'in', 'both');
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
@@ -9,7 +9,9 @@ motionSensor.watch(async (err, value) => {
     if (err) {
         throw err;
     }
-    console.log({value, motionDetected: true})
+    let today = new Date()
+    console.log({value, motionDetected: Boolean(value),
+    time: today.getMilliseconds()})
     if (!isConnected()) {
         await connectToDiscord();
     }
