@@ -39,7 +39,8 @@ function isConnected() {
 }
 async function sendPoopMessage() {
     try {
-        await client.channels.get(String(process.env.DISCORD_CHANNEL)).send('It\'s time to scoopy the poopy!')
+        await client.channels.find('id',String(process.env.DISCORD_CHANNEL)).send('TEST')
+        // await client.channels.get(String(process.env.DISCORD_CHANNEL)).send('It\'s time to scoopy the poopy!')
         console.log("Message Sent!")
     }
     catch (err){
