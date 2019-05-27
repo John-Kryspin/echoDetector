@@ -29,14 +29,14 @@ function connectToDiscord() {
         client.login(process.env.DISCORD_KEY);
         client.on('ready', () => {
             console.log(`Logged in as ${client.user.tag}!`);
+            try {
+                client.channels.get(String(process.env.DISCORD_CHANNEL)).send('It\'s time to scoopy the poopy!')
+                console.log("Message Sent!")
+            }
+            catch (err){
+                console.log(err)
+            }
             resolve()
-                try {
-                    client.channels.get(String(process.env.DISCORD_CHANNEL)).send('It\'s time to scoopy the poopy!')
-                    console.log("Message Sent!")
-                }
-                catch (err){
-                    console.log(err)
-                }
             
         });
     })
