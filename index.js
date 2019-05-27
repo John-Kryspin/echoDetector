@@ -4,6 +4,8 @@ const motionSensor = new Gpio(17, 'in', 'both');
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
+console.log(process.env.DISCORD_CHANNEL)
+console.log(process.env.DISCORD_KEY)
 const DISCORD_READY = 0;
 motionSensor.watch(async (err, value) => {
     if (err) {
