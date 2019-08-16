@@ -27,8 +27,6 @@ console.log("Watching")
 process.on('SIGINT', () => {
     motionSensor.unexport();
 });
-
-var watch = require('node-watch');
  
 watch('/media/external', { recursive: true }, function(evt, name) {
   console.log('%s changed.', name);
