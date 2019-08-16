@@ -8,7 +8,7 @@ const DISCORD_READY = 0;
 
 console.log("Watching")
  
-watch('/media/external', { recursive: true }, async function(evt, name) {
+watch('/media/external/torrents/completed', { recursive: true }, async function(evt, name) {
   console.log('%s changed.', name);
   if (!isConnected()) {
     await connectToDiscord();
